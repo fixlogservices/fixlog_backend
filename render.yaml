@@ -7,6 +7,8 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
       - key: SUPABASE_DB_URL
         sync: false   # Se agrega manualmente en el dashboard de Render
       - key: SUPABASE_URL
