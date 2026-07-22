@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: fixlog-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SUPABASE_DB_URL
+        sync: false   # Se agrega manualmente en el dashboard de Render
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_POOL_SIZE
+        value: "5"
+      - key: SUPABASE_MAX_OVERFLOW
+        value: "10"
+      - key: SUPABASE_POOL_RECYCLE
+        value: "1800"
+      - key: SUPABASE_POOL_TIMEOUT
+        value: "30"
+      - key: SUPABASE_ECHO
+        value: "false"
